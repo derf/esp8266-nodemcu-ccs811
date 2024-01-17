@@ -48,6 +48,8 @@ Copy **ccs811.lua** to your NodeMCU board and set it up as follows.
 ccs811 = require("ccs811")
 i2c.setup(0, 1, 2, i2c.SLOW)
 ccs811.start()
+-- optionally, if HDC1080 is available:
+hdc1080.setup()
 
 -- can be called with up to 1 Hz
 function some_timer_callback()
