@@ -18,8 +18,9 @@ ccs811.lua has been tested with Lua 5.1 on NodeMCU firmware 3.0.1 (Release
 Most practical applications (such as the example in init.lua) also need the
 following modules.
 
-* hdc1080
 * gpio
+* hdc1080
+* http
 * mqtt
 * node
 * tmr
@@ -87,6 +88,34 @@ influx_attr = "..."
 
 Readings will be published as `ccs811[influx_attr] eco2_ppm=%d,tvoc_ppb=%d,status=%d,error=%d`.
 Unless `influx_attr = ''`, it must start with a comma, e.g. `influx_attr = ',device=' .. device_id`.
+
+## Flashing
+
+This repository contains a NodeMCU build that provides the required modules.
+You can flash it using e.g. esptool:
+
+```bash
+esptool write_flash 0x00000 firmware/nodemcu-release-12-modules-2024-01-18-19-25-08-float.bin
+```
+
+This is required just once; changes to Lua files generally do not mandate
+flashing a new NodeMCU image.
+
+After flashing, the firmware will need a few seconds to initialize the
+filesystem. You can then upload the Python code, e.g. using nodemcu-uploader:
+
+```bash
+ext/nodemcu-uploader/nodemcu-uploader.py upload *.lua
+```
+
+Afterwards, you can check whether everything works using the serial connection,
+e.g.
+
+```bash
+pyserial-miniterm --dtr 0 --rts 0 /dev/ttyUSB0 115200
+```
+
+You may need to adjust the `/dev/tty` device name.
 
 ## Images
 
