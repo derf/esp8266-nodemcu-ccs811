@@ -120,3 +120,11 @@ You may need to adjust the `/dev/tty` device name.
 ## Images
 
 ![](https://finalrewind.org/projects/esp8266-nodemcu-ccs811/media/hass.png)
+
+## Resources
+
+Mirrors of the esp8266-nodemcu-ccs811 repository are maintained at the following locations:
+
+* [Chaosdorf](https://chaosdorf.de/git/derf/esp8266-nodemcu-ccs811)
+* [git.finalrewind.org](https://git.finalrewind.org/esp8266-nodemcu-ccs811/)
+* [GitHub](https://github.com/derf/esp8266-nodemcu-ccs811)
